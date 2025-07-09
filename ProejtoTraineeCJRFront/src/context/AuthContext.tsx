@@ -21,6 +21,8 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userData');
     const token = localStorage.getItem('authToken');
     const userDataString = localStorage.getItem('userData'); // Tentamos recuperar os dados do usuário
 
