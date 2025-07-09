@@ -1,0 +1,61 @@
+import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import { theme } from '../../styles/theme';
+import { User } from '@/types/user';
+import { useAuth } from '@/context/AuthContext';
+import router from 'next/router';
+interface HeaderProps {
+  isAuthenticated: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ isAuthenticated }) => {
+  const defaultAvatar = '/quagsire.png';
+  const [fotoUrl, setFotoUrl] = useState<string>(defaultAvatar);
+  const [user,setUser] = useState<User>()
+  const {logout} = useAuth()
+
+  useEffect(() => {
+    const userDataString = localStorage.getItem('userData');
+    
+    if (userDataString) {
+      try {
+        const userData: User = JSON.parse(userDataString);
+        setUser(userData)
+
+    setFotoUrl(
+          userData.fotoPerfil 
+            ? `${process.env.NEXT_PUBLIC_INTERNAL_API_URL}${userData.fotoPerfil}` 
+            : defaultAvatar 
+        );
+
+
+      } catch (error) {
+        console.error("Falha ao analisar os dados do usuário do localStorage", error);
+      }
+    }
+  }, []);
+
+  return (    
+  <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', backgroundColor: theme.colors.secondary }}>
+      <Image src="/LogoUnb.svg" alt="Logo" width={50} height={50} onClick={() => router.push("/")} className='cursor-pointer' />
+      <div>
+        {isAuthenticated ? (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <span>🔔</span>
+            <Image src={fotoUrl} alt="User Avatar" width={40} height={40} style={{ borderRadius: '50%', cursor:'pointer' }} onClick={() => router.push(`/perfil/${user?.id}`)}/>
+            <Image src={"/logout-svgrepo-com.png"} alt="Logout" width={30} height={30} style={{ cursor: 'pointer' }}  onClick={logout} />
+          </div>
+        ) : (
+          <Link href="/login">
+            <button style={{ padding: '0.5rem 1.5rem', fontSize: '1rem', backgroundColor: theme.colors.primary, color: theme.colors.white, border: 'none', borderRadius: '8px', cursor: 'pointer' }}>
+              Login
+            </button>
+          </Link>
+        )}
+      </div>
+    </header>
+  );
+};
+
+export default Header;

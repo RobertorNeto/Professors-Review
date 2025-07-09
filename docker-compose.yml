@@ -1,0 +1,25 @@
+services:
+  frontend:
+    build: ./ProejtoTraineeCJRFront
+    container_name: frontend
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:3001
+      NEXT_PUBLIC_INTERNAL_API_URL: http://backend:3001 
+    depends_on:
+      - backend
+  backend:
+    build: ./ProjetoTraineeCJRBack
+    container_name: meu-backend
+    ports:
+      - "3001:3001"
+    environment:
+      DATABASE_URL: file:./dev.db
+      JWT_SECRET: rI@q^cb&F%9KegQi6oTL8,tf'j=g[<~08Fv.nJPZjU9X)rt
+    volumes:
+      - ./ProjetoTraineeCJRBack/uploads:/app/uploads
+      
+networks:
+  default:
+    name: minha-rede
