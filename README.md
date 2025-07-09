@@ -63,3 +63,8 @@ Este projeto foi desenvolvido com grande dedicação dos membros:
 - **[Adriano](https://github.com/Adrianowiedmann)**.
     
 como um desafio para o **Processo Trainee da CJR (Empresa Júnior de Computação da UnB)**. Agradeço imensamente à CJR pela oportunidade de aprendizado e trabalho em equipe.
+
+## 🖼️ Imagem de Referência Tela Inicial:
+![TelaInicial](TelaInicial.png)
+
+
