@@ -1,4 +1,4 @@
-# AvaliaProf - Plataforma de Avaliação de Professores
+# Professors-Review - Plataforma de Avaliação de Professores
 
 ![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 ![Nest.js](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
@@ -61,8 +61,5 @@ Este projeto foi desenvolvido com grande dedicação dos membros:
 - **[Rafael](https://github.com/leitaonerd)**.
 - **[Roberto](https://github.com/RobertorNeto)**.
 - **[Adriano](https://github.com/Adrianowiedmann)**.
-  
+    
 como um desafio para o **Processo Trainee da CJR (Empresa Júnior de Computação da UnB)**. Agradeço imensamente à CJR pela oportunidade de aprendizado e trabalho em equipe.
-
-## 🖼️ Imagem de Referência Tela Inicial:
-    ![Alt text](./TelaInicial.png)
